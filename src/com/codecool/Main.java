@@ -26,9 +26,7 @@ public class Main {
         for (int i = 0; i < raceTime; i++) {
             if (isRaining()) {
                 Car.setSpeedLimit(carSpeedLimit);
-                System.out.printf("Race time: %s hour(s), it's raining, speed limit is %s!\n", i + 1, Car.speedLimit);
             }
-            System.out.println(Car.speedLimit);
             for (Car car : cars) {
                 car.moveForAnHour();
             }

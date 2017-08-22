@@ -7,7 +7,7 @@ class Car {
     static int speedLimit = 0;
     private int normalSpeed;
     int distanceTraveled;
-    int actualSpeed;
+    private int actualSpeed;
 
     static void setSpeedLimit(int limit) {
         speedLimit = limit;
