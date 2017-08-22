@@ -25,12 +25,13 @@ class Car {
         String[] names = {"Elysium", "Specter", "Wolf", "Legacy", "Buffalo", "Centaur",
                 "Prestige", "Intro", "Blend", "Evolution", "Crest", "Thunder",
                 "Nebula", "Chase", "Shadow", "Quicksilver", "Trailblazer", "Guardian",
-                "Blast", "Enigma"};
+                "Blast", "Enigma", "Centurion", "Bolt", "Vortex", "Fragment", "Freedom",
+                "Renegade", "Hydra", "Stardust", "Liberty", "Desire"};
         int i = 0;
         int j = 0;
         while (i == j) {
-            i = randomGenerator.nextInt(20);
-            j = randomGenerator.nextInt(20);
+            i = randomGenerator.nextInt(30);
+            j = randomGenerator.nextInt(30);
         }
         name = names[i] + " " + names[j];
 
