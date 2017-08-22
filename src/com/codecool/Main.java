@@ -54,45 +54,52 @@ public class Main {
         cars.sort((car1, car2) -> car2.distanceTraveled - car1.distanceTraveled);
         motorcycles.sort((m1, m2) -> m2.distanceTraveled - m1.distanceTraveled);
         trucks.sort((t1, t2) -> t2.distanceTraveled - t1.distanceTraveled);
-        int counter = 1;
+        int place = 1;
         System.out.println("Cars:");
         for (Car car : cars) {
-            printVehicles(counter, car);
-            counter++;
+            printVehicles(place, car);
+            place++;
         }
-        counter = 1;
+        place = 1;
         System.out.println("\nMotorcycles:");
         for (Motorcycle motorcycle : motorcycles) {
-            printVehicles(counter, motorcycle);
-            counter++;
+            printVehicles(place, motorcycle);
+            place++;
         }
-        counter = 1;
+        place = 1;
         System.out.println("\nTrucks:");
         for (Truck truck : trucks) {
-            printVehicles(counter, truck);
-            counter++;
+            printVehicles(place, truck);
+            place++;
         }
     }
 
-    private static void printVehicles(int counter, Car vehicle) {
-        System.out.print(counter + ": ");
-        System.out.print(vehicle.name + " - ");
-        System.out.print(vehicle.distanceTraveled + " km - ");
-        System.out.println(vehicle.getClass().getSimpleName());
+    private static void printVehicles(int place, Car car) {
+        printVehicles(place,
+                car.name,
+                car.distanceTraveled,
+                car.getClass().getSimpleName());
     }
 
-    private static void printVehicles(int counter, Motorcycle vehicle) {
-        System.out.print(counter + ": ");
-        System.out.print(vehicle.name + " - ");
-        System.out.print(vehicle.distanceTraveled + " km - ");
-        System.out.println(vehicle.getClass().getSimpleName());
+    private static void printVehicles(int place, Motorcycle motorcycle) {
+        printVehicles(place,
+                motorcycle.name,
+                motorcycle.distanceTraveled,
+                motorcycle.getClass().getSimpleName());
     }
 
-    private static void printVehicles(int counter, Truck vehicle) {
-        System.out.print(counter + ": ");
-        System.out.print(vehicle.name + " - ");
-        System.out.print(vehicle.distanceTraveled + " km - ");
-        System.out.println(vehicle.getClass().getSimpleName());
+    private static void printVehicles(int place, Truck truck) {
+        printVehicles(place,
+                truck.name,
+                truck.distanceTraveled,
+                truck.getClass().getSimpleName());
+    }
+
+    private static void printVehicles(int place, String name, int distanceTraveled, String type) {
+        System.out.print(place + ": ");
+        System.out.print(name + " - ");
+        System.out.print(distanceTraveled + " km - ");
+        System.out.println(type);
     }
 
 
