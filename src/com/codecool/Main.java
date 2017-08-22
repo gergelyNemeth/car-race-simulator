@@ -5,6 +5,7 @@ import java.util.*;
 public class Main {
 
     private static List<Car> cars = new ArrayList<>();
+    private static List<Motorcycle> motorcycles = new ArrayList<>();
 
     private static Boolean isRaining() {
         double chanceToRain = 0.3;
@@ -16,6 +17,7 @@ public class Main {
     private static void createVehicles() {
         for (int i = 0; i < 10; i++) {
             cars.add(new Car());
+            motorcycles.add(new Motorcycle(i + 1));
         }
     }
 
@@ -32,19 +34,44 @@ public class Main {
             }
             // Reset speed limit of the cars after an hour
             Car.setSpeedLimit(0);
+
+            for (Motorcycle motorcycle : motorcycles) {
+                if (isRaining()) {
+                    motorcycle.setRainSpeed();
+                }
+                motorcycle.moveForAnHour();
+            }
         }
     }
 
     private static void printRaceResults() {
         cars.sort((car1, car2) -> car2.distanceTraveled - car1.distanceTraveled);
+        motorcycles.sort((m1, m2) -> m2.distanceTraveled - m1.distanceTraveled);
         int counter = 1;
+        System.out.println("Cars:");
         for (Car car : cars) {
-            System.out.print(counter + ": ");
-            System.out.print(car.name + " - ");
-            System.out.print(car.distanceTraveled + " km - ");
-            System.out.println(car.getClass().getSimpleName());
+            printVehicles(counter, car);
             counter++;
         }
+        System.out.println("\nMotorcycles:");
+        for (Motorcycle motorcycle : motorcycles) {
+            printVehicles(counter, motorcycle);
+            counter++;
+        }
+    }
+
+    private static void printVehicles(int counter, Car vehicle) {
+        System.out.print(counter + ": ");
+        System.out.print(vehicle.name + " - ");
+        System.out.print(vehicle.distanceTraveled + " km - ");
+        System.out.println(vehicle.getClass().getSimpleName());
+    }
+
+    private static void printVehicles(int counter, Motorcycle vehicle) {
+        System.out.print(counter + ": ");
+        System.out.print(vehicle.name + " - ");
+        System.out.print(vehicle.distanceTraveled + " km - ");
+        System.out.println(vehicle.getClass().getSimpleName());
     }
 
 
