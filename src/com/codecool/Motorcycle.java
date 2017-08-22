@@ -4,15 +4,17 @@ import java.util.Random;
 
 class Motorcycle {
     String name;
-    private int normalSpeed = 100;
+    private static int nameNumber = 1;
+    private static int normalSpeed = 100;
     private int actualSpeed;
     private int rainSpeed;
     int distanceTraveled;
 
-    Motorcycle(int nameNumber) {
+    Motorcycle() {
         actualSpeed = normalSpeed;
         name = "Motorcycle " + Integer.toString(nameNumber);
         distanceTraveled = 0;
+        nameNumber += 1;
     }
 
     void setRainSpeed() {
