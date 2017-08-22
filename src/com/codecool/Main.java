@@ -53,6 +53,7 @@ public class Main {
     private static void printRaceResults() {
         cars.sort((car1, car2) -> car2.distanceTraveled - car1.distanceTraveled);
         motorcycles.sort((m1, m2) -> m2.distanceTraveled - m1.distanceTraveled);
+        trucks.sort((t1, t2) -> t2.distanceTraveled - t1.distanceTraveled);
         int counter = 1;
         System.out.println("Cars:");
         for (Car car : cars) {
