@@ -6,6 +6,7 @@ public class Main {
 
     private static List<Car> cars = new ArrayList<>();
     private static List<Motorcycle> motorcycles = new ArrayList<>();
+    private static List<Truck> trucks = new ArrayList<>();
 
     private static Boolean isRaining() {
         double chanceToRain = 0.3;
@@ -18,6 +19,7 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             cars.add(new Car());
             motorcycles.add(new Motorcycle(i + 1));
+            trucks.add(new Truck());
         }
     }
 
@@ -41,6 +43,10 @@ public class Main {
                 }
                 motorcycle.moveForAnHour();
             }
+
+            for (Truck truck : trucks) {
+                truck.moveForAnHour();
+            }
         }
     }
 
@@ -53,9 +59,16 @@ public class Main {
             printVehicles(counter, car);
             counter++;
         }
+        counter = 1;
         System.out.println("\nMotorcycles:");
         for (Motorcycle motorcycle : motorcycles) {
             printVehicles(counter, motorcycle);
+            counter++;
+        }
+        counter = 1;
+        System.out.println("\nTrucks:");
+        for (Truck truck : trucks) {
+            printVehicles(counter, truck);
             counter++;
         }
     }
@@ -68,6 +81,13 @@ public class Main {
     }
 
     private static void printVehicles(int counter, Motorcycle vehicle) {
+        System.out.print(counter + ": ");
+        System.out.print(vehicle.name + " - ");
+        System.out.print(vehicle.distanceTraveled + " km - ");
+        System.out.println(vehicle.getClass().getSimpleName());
+    }
+
+    private static void printVehicles(int counter, Truck vehicle) {
         System.out.print(counter + ": ");
         System.out.print(vehicle.name + " - ");
         System.out.print(vehicle.distanceTraveled + " km - ");
