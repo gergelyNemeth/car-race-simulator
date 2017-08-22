@@ -4,14 +4,10 @@ import java.util.Random;
 
 class Car {
     String name;
-    static int speedLimit = 0;
+    private static int speedLimit = 0;
     private int normalSpeed;
-    int distanceTraveled;
     private int actualSpeed;
-
-    static void setSpeedLimit(int limit) {
-        speedLimit = limit;
-    }
+    int distanceTraveled;
 
     Car() {
         Random randomGenerator = new Random();
@@ -36,6 +32,10 @@ class Car {
         name = names[i] + " " + names[j];
 
         distanceTraveled = 0;
+    }
+
+    static void setSpeedLimit(int limit) {
+        speedLimit = limit;
     }
 
     void moveForAnHour() {
