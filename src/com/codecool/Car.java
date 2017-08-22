@@ -4,13 +4,10 @@ import java.util.Random;
 
 class Car {
     String name;
+    static int speedLimit = 0;
     private int normalSpeed;
-    private int distanceTraveled;
-    int distance;
-    private static int speedLimit;
-
-    private static final int MINSPEED = 80;
-    private static final int MAXSPEED = 120;
+    int distanceTraveled;
+    int actualSpeed;
 
     static void setSpeedLimit(int limit) {
         speedLimit = limit;
@@ -19,11 +16,11 @@ class Car {
     Car() {
         Random randomGenerator = new Random();
         // Speed
-        Float random = randomGenerator.nextFloat();
-        normalSpeed = MINSPEED + (int) (random * (MAXSPEED - MINSPEED));
-        if (speedLimit > 0) {
-            normalSpeed = speedLimit;
-        }
+        int minSpeed = 80;
+        int maxSpeed = 110;
+        double random = randomGenerator.nextDouble();
+        normalSpeed = minSpeed + (int) (random * (maxSpeed - minSpeed));
+        actualSpeed = normalSpeed;
         // Name
         String[] names = {"Elysium", "Specter", "Wolf", "Legacy", "Buffalo", "Centaur",
                 "Prestige", "Intro", "Blend", "Evolution", "Crest", "Thunder",
@@ -41,7 +38,11 @@ class Car {
     }
 
     void moveForAnHour() {
-        distanceTraveled += 1;
-        distance = normalSpeed * distanceTraveled;
+        if (speedLimit > 0) {
+            actualSpeed = speedLimit;
+        } else {
+            actualSpeed = normalSpeed;
+        }
+        distanceTraveled += actualSpeed;
     }
 }
