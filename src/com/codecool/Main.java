@@ -7,44 +7,43 @@ public class Main {
     private static List<Car> cars = new ArrayList<>();
 
     private static Boolean isRaining() {
+        double chanceToRain = 0.3;
         Random randomGenerator = new Random();
-        int random = randomGenerator.nextInt(10);
-        // 30% chance to rain
-        return random < 3;
+        double random = randomGenerator.nextDouble();
+        return random < chanceToRain;
     }
 
     private static void createVehicles() {
-        Random randomGenerator = new Random();
-        int random = randomGenerator.nextInt(10);
-        // 30% chance to limit the cars speed to 70 km/h
-        if (random <= 3) {
-            Car.setSpeedLimit(70);
-        }
-        // Create 10 cars
         for (int i = 0; i < 10; i++) {
             cars.add(new Car());
         }
     }
 
     private static void simulateRace() {
-        // Move the vehicles for 50 hours
-        for (int i = 0; i < 50; i++) {
+        int carSpeedLimit = 70; // km/h
+        int raceTime = 50; // hours
+
+        for (int i = 0; i < raceTime; i++) {
+            if (isRaining()) {
+                Car.setSpeedLimit(carSpeedLimit);
+                System.out.printf("Race time: %s hour(s), it's raining, speed limit is %s!\n", i + 1, Car.speedLimit);
+            }
+            System.out.println(Car.speedLimit);
             for (Car car : cars) {
                 car.moveForAnHour();
             }
-        }
-        if (isRaining()) {
-            System.out.println("It's a rainy day!");
+            // Reset speed limit of the cars after an hour
+            Car.setSpeedLimit(0);
         }
     }
 
     private static void printRaceResults() {
-        cars.sort((car1, car2) -> car2.distance - car1.distance);
+        cars.sort((car1, car2) -> car2.distanceTraveled - car1.distanceTraveled);
         int counter = 1;
         for (Car car : cars) {
             System.out.print(counter + ": ");
             System.out.print(car.name + " - ");
-            System.out.print(car.distance + " km - ");
+            System.out.print(car.distanceTraveled + " km - ");
             System.out.println(car.getClass().getSimpleName());
             counter++;
         }
