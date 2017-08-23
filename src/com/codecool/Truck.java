@@ -1,5 +1,7 @@
 package com.codecool;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
 class Truck {
@@ -9,16 +11,28 @@ class Truck {
     private int actualSpeed;
     private int breakDownLeft;
     private int distanceTraveled;
+    private static List<String> usedNames = new ArrayList<>();
 
     Truck() {
         actualSpeed = normalSpeed;
         breakDownLeft = 0;
-
-        Random randomGenerator = new Random();
-        int nameNumber = randomGenerator.nextInt(100);
-        name = Integer.toString(nameNumber);
-
+        name = createNewName();
         distanceTraveled = 0;
+    }
+
+    private String createNewName() {
+        Random randomGenerator = new Random();
+        Boolean nameNotUsed = true;
+        String newName = "";
+        while (nameNotUsed) {
+            int nameNumber = randomGenerator.nextInt(100);
+            newName = Integer.toString(nameNumber);
+            if (!usedNames.contains(newName)) {
+                usedNames.add(newName);
+                nameNotUsed = false;
+            }
+        }
+        return newName;
     }
 
     private Boolean breakDown() {
