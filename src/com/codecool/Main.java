@@ -55,7 +55,7 @@ public class Main {
         motorcycles.sort((m1, m2) -> m2.getDistanceTraveled() - m1.getDistanceTraveled());
         trucks.sort((t1, t2) -> t2.getDistanceTraveled() - t1.getDistanceTraveled());
         int place = 1;
-        System.out.println("Cars:");
+        System.out.println("\nRace Results:\n\nCars:");
         for (Car car : cars) {
             printVehicles(place, car);
             place++;
