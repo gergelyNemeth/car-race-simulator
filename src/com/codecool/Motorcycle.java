@@ -3,12 +3,12 @@ package com.codecool;
 import java.util.Random;
 
 class Motorcycle {
-    String name;
+    private String name;
     private static int nameNumber = 1;
     private static int normalSpeed = 100;
     private int actualSpeed;
     private int rainSpeed;
-    int distanceTraveled;
+    private int distanceTraveled;
 
     Motorcycle() {
         actualSpeed = normalSpeed;
@@ -23,6 +23,14 @@ class Motorcycle {
         int maxSlowingDown = 50;
         double random = randomGenerator.nextDouble();
         rainSpeed = normalSpeed - (int) ((random * maxSlowingDown) - minSlowingDown);
+    }
+
+    String getName() {
+        return name;
+    }
+
+    int getDistanceTraveled() {
+        return distanceTraveled;
     }
 
     void moveForAnHour() {

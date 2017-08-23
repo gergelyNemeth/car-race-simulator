@@ -4,12 +4,11 @@ import java.util.Random;
 
 class Truck {
 
-    String name;
+    private String name;
     private int normalSpeed = 100;
     private int actualSpeed;
     private int breakDownLeft;
-
-    int distanceTraveled;
+    private int distanceTraveled;
 
     Truck() {
         actualSpeed = normalSpeed;
@@ -37,6 +36,14 @@ class Truck {
             }
             return false;
         }
+    }
+
+    String getName() {
+        return name;
+    }
+
+    int getDistanceTraveled() {
+        return distanceTraveled;
     }
 
     void moveForAnHour() {

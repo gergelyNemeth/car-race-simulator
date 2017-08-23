@@ -51,9 +51,9 @@ public class Main {
     }
 
     private static void printRaceResults() {
-        cars.sort((car1, car2) -> car2.distanceTraveled - car1.distanceTraveled);
-        motorcycles.sort((m1, m2) -> m2.distanceTraveled - m1.distanceTraveled);
-        trucks.sort((t1, t2) -> t2.distanceTraveled - t1.distanceTraveled);
+        cars.sort((car1, car2) -> car2.getDistanceTraveled() - car1.getDistanceTraveled());
+        motorcycles.sort((m1, m2) -> m2.getDistanceTraveled() - m1.getDistanceTraveled());
+        trucks.sort((t1, t2) -> t2.getDistanceTraveled() - t1.getDistanceTraveled());
         int place = 1;
         System.out.println("Cars:");
         for (Car car : cars) {
@@ -76,22 +76,22 @@ public class Main {
 
     private static void printVehicles(int place, Car car) {
         printVehicles(place,
-                car.name,
-                car.distanceTraveled,
+                car.getName(),
+                car.getDistanceTraveled(),
                 car.getClass().getSimpleName());
     }
 
     private static void printVehicles(int place, Motorcycle motorcycle) {
         printVehicles(place,
-                motorcycle.name,
-                motorcycle.distanceTraveled,
+                motorcycle.getName(),
+                motorcycle.getDistanceTraveled(),
                 motorcycle.getClass().getSimpleName());
     }
 
     private static void printVehicles(int place, Truck truck) {
         printVehicles(place,
-                truck.name,
-                truck.distanceTraveled,
+                truck.getName(),
+                truck.getDistanceTraveled(),
                 truck.getClass().getSimpleName());
     }
 

@@ -3,11 +3,11 @@ package com.codecool;
 import java.util.Random;
 
 class Car {
-    String name;
+    private String name;
     private static int speedLimit = 0;
     private int normalSpeed;
     private int actualSpeed;
-    int distanceTraveled;
+    private int distanceTraveled;
 
     Car() {
         Random randomGenerator = new Random();
@@ -36,6 +36,14 @@ class Car {
 
     static void setSpeedLimit(int limit) {
         speedLimit = limit;
+    }
+
+    String getName() {
+        return name;
+    }
+
+    int getDistanceTraveled() {
+        return distanceTraveled;
     }
 
     void moveForAnHour() {
