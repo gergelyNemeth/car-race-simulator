@@ -4,9 +4,10 @@ import java.util.*;
 
 public class Main {
 
-    private static List<Car> cars = new ArrayList<>();
-    private static List<Motorcycle> motorcycles = new ArrayList<>();
-    private static List<Truck> trucks = new ArrayList<>();
+    private static List<Vehicle> cars = new ArrayList<>();
+    private static List<Vehicle> motorcycles = new ArrayList<>();
+    private static List<Vehicle> trucks = new ArrayList<>();
+    private static List<Vehicle> vehicles = new ArrayList<>();
 
     private static Boolean isRaining() {
         double chanceToRain = 0.3;
@@ -17,9 +18,15 @@ public class Main {
 
     private static void createVehicles() {
         for (int i = 0; i < 10; i++) {
-            cars.add(new Car());
-            motorcycles.add(new Motorcycle());
-            trucks.add(new Truck());
+            Vehicle car = new Car();
+            Vehicle motorcycle = new Motorcycle();
+            Vehicle truck = new Truck();
+            cars.add(car);
+            motorcycles.add(motorcycle);
+            trucks.add(truck);
+            vehicles.add(car);
+            vehicles.add(motorcycle);
+            vehicles.add(truck);
         }
     }
 
@@ -31,68 +38,40 @@ public class Main {
             if (isRaining()) {
                 Car.setSpeedLimit(carSpeedLimit);
             }
-            for (Car car : cars) {
+            for (Vehicle car : cars) {
                 car.moveForAnHour();
             }
             // Reset speed limit of the cars after an hour
             Car.setSpeedLimit(0);
 
-            for (Motorcycle motorcycle : motorcycles) {
+            for (Vehicle  motorcycle : motorcycles) {
                 if (isRaining()) {
                     motorcycle.setRainSpeed();
                 }
                 motorcycle.moveForAnHour();
             }
 
-            for (Truck truck : trucks) {
+            for (Vehicle  truck : trucks) {
                 truck.moveForAnHour();
             }
         }
     }
 
     private static void printRaceResults() {
-        cars.sort((car1, car2) -> car2.getDistanceTraveled() - car1.getDistanceTraveled());
-        motorcycles.sort((m1, m2) -> m2.getDistanceTraveled() - m1.getDistanceTraveled());
-        trucks.sort((t1, t2) -> t2.getDistanceTraveled() - t1.getDistanceTraveled());
+        vehicles.sort((v1, v2) -> v2.getDistanceTraveled() - v1.getDistanceTraveled());
         int place = 1;
-        System.out.println("\nRace Results:\n\nCars:");
-        for (Car car : cars) {
-            printVehicles(place, car);
-            place++;
-        }
-        place = 1;
-        System.out.println("\nMotorcycles:");
-        for (Motorcycle motorcycle : motorcycles) {
-            printVehicles(place, motorcycle);
-            place++;
-        }
-        place = 1;
-        System.out.println("\nTrucks:");
-        for (Truck truck : trucks) {
-            printVehicles(place, truck);
+        System.out.println("\nRace Results:\n");
+        for (Vehicle vehicle : vehicles) {
+            printVehicles(place, vehicle);
             place++;
         }
     }
 
-    private static void printVehicles(int place, Car car) {
+    private static void printVehicles(int place, Vehicle vehicle) {
         printVehicles(place,
-                car.getName(),
-                car.getDistanceTraveled(),
-                car.getClass().getSimpleName());
-    }
-
-    private static void printVehicles(int place, Motorcycle motorcycle) {
-        printVehicles(place,
-                motorcycle.getName(),
-                motorcycle.getDistanceTraveled(),
-                motorcycle.getClass().getSimpleName());
-    }
-
-    private static void printVehicles(int place, Truck truck) {
-        printVehicles(place,
-                truck.getName(),
-                truck.getDistanceTraveled(),
-                truck.getClass().getSimpleName());
+                vehicle.getName(),
+                vehicle.getDistanceTraveled(),
+                vehicle.getClass().getSimpleName());
     }
 
     private static void printVehicles(int place, String name, int distanceTraveled, String type) {

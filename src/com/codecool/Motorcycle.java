@@ -2,7 +2,7 @@ package com.codecool;
 
 import java.util.Random;
 
-class Motorcycle {
+class Motorcycle implements Vehicle {
     private String name;
     private static int nameNumber = 1;
     private static int normalSpeed = 100;
@@ -17,7 +17,7 @@ class Motorcycle {
         nameNumber += 1;
     }
 
-    void setRainSpeed() {
+    public void setRainSpeed() {
         Random randomGenerator = new Random();
         int minSlowingDown = 5;
         int maxSlowingDown = 50;
@@ -25,15 +25,15 @@ class Motorcycle {
         rainSpeed = normalSpeed - (int) ((random * maxSlowingDown) - minSlowingDown);
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    int getDistanceTraveled() {
+    public int getDistanceTraveled() {
         return distanceTraveled;
     }
 
-    void moveForAnHour() {
+    public void moveForAnHour() {
         if (rainSpeed > 0) {
             actualSpeed = rainSpeed;
         } else {

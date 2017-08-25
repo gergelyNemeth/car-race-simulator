@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
-class Truck {
+class Truck implements Vehicle {
 
     private String name;
     private int normalSpeed = 100;
@@ -52,20 +52,25 @@ class Truck {
         }
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    int getDistanceTraveled() {
+    public int getDistanceTraveled() {
         return distanceTraveled;
     }
 
-    void moveForAnHour() {
+    public void moveForAnHour() {
         if (breakDown()) {
             actualSpeed = 0;
         } else {
             actualSpeed = normalSpeed;
         }
         distanceTraveled += actualSpeed;
+    }
+
+    public void setRainSpeed() {
+        // Empty method implementation.
+        // Trucks don't care about the rain.
     }
 }
