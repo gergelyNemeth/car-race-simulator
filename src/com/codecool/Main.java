@@ -44,14 +44,14 @@ public class Main {
             // Reset speed limit of the cars after an hour
             Car.setSpeedLimit(0);
 
-            for (Vehicle  motorcycle : motorcycles) {
+            for (Vehicle motorcycle : motorcycles) {
                 if (isRaining()) {
                     motorcycle.setRainSpeed();
                 }
                 motorcycle.moveForAnHour();
             }
 
-            for (Vehicle  truck : trucks) {
+            for (Vehicle truck : trucks) {
                 truck.moveForAnHour();
             }
         }
@@ -68,17 +68,10 @@ public class Main {
     }
 
     private static void printVehicles(int place, Vehicle vehicle) {
-        printVehicles(place,
-                vehicle.getName(),
-                vehicle.getDistanceTraveled(),
-                vehicle.getClass().getSimpleName());
-    }
-
-    private static void printVehicles(int place, String name, int distanceTraveled, String type) {
         System.out.print(place + ": ");
-        System.out.print(name + " - ");
-        System.out.print(distanceTraveled + " km - ");
-        System.out.println(type);
+        System.out.print(vehicle.getName() + " - ");
+        System.out.print(vehicle.getDistanceTraveled() + " km - ");
+        System.out.println(vehicle.getClass().getSimpleName());
     }
 
 
